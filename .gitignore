@@ -1,0 +1,62 @@
+############################
+# Powered Rails Git Ignore #
+############################
+
+#     Ignore - System      #
+
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+#     Ignore - Gradle      #
+
+out
+classes
+lib
+doc
+target
+build
+bin
+dist
+
+#    Ignore - Extentions   #
+
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.com
+*.7z
+*.zip
+*.rar
+*.tar
+*.iso
+*.gz
+*.dmg
+*.bak
+
+#      Ignore - Github     #
+
+.git
+
+#       Ignore - Logs      #
+
+*.logs
+/logs
+/log
+
+#      Ignore - Project    #
+
+.idea
+.nb-gradle
+.settings
+.gradle
+.classpath
+.project
+*.iml
+*.iws
+*.ipr
+nbproject

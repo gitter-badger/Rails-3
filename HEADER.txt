@@ -1,4 +1,4 @@
-This file is a part of the platform "Rails", licensed under the MIT License (MIT).
+This file is a part of the multiplayer platform Powered Rails, licensed under the MIT License (MIT).
 
 Copyright (c) Powered Rails
 Copyright (c) contributors

@@ -26,6 +26,15 @@ package org.poweredrails.rails.net.handler;
 
 public class HandlerRegistry {
 
+    /**
+     * <p>
+     *     Return the handler instance registered by that class.
+     * </p>
+     *
+     * @param clazz Class of the handler.
+     * @param <T> The type of the handler.
+     * @return An instance of the handler, or null if unregistered.
+     */
     public <T> T getHandler(Class<T> clazz) {
         return null;
     }

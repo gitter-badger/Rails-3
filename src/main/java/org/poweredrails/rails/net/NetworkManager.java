@@ -34,7 +34,6 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.SocketAddress;
-import java.util.HashMap;
 
 public class NetworkManager {
 
@@ -42,16 +41,29 @@ public class NetworkManager {
     private final EventLoopGroup nettyBossGroup = new NioEventLoopGroup();
     private final EventLoopGroup nettyWorkerGroup = new NioEventLoopGroup();
 
+    /**
+     * <p>
+     *     Initiate the channel.
+     * </p>
+     */
     public NetworkManager() {
-            nettyBootstrap
-                    .group(nettyBossGroup, nettyWorkerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childOption(ChannelOption.TCP_NODELAY, true)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+        this.nettyBootstrap
+                .group(this.nettyBossGroup, this.nettyWorkerGroup)
+                .channel(NioServerSocketChannel.class)
+                .childOption(ChannelOption.TCP_NODELAY, true)
+                .childOption(ChannelOption.SO_KEEPALIVE, true);
     }
 
+    /**
+     * <p>
+     *     Bind the channel to the provided address.
+     * </p>
+     *
+     * @param socketAddress The address to bind the channel to.
+     * @return The result of the binding.
+     */
     public ChannelFuture bindTo(final SocketAddress socketAddress) {
-        return nettyBootstrap.bind(socketAddress).addListener(new GenericFutureListener<Future<? super Void>>() {
+        return this.nettyBootstrap.bind(socketAddress).addListener(new GenericFutureListener<Future<? super Void>>() {
             @Override
             public void operationComplete(Future<? super Void> f) throws Exception {
                 if (f.isSuccess()) {
@@ -63,17 +75,22 @@ public class NetworkManager {
         });
     }
 
-    public void onBindSuccess(SocketAddress address) {
-        // Call "BindServerEvent"
-    }
-
-    public void onBindFailure(SocketAddress address, Throwable throwable) {
-        // Call "BindServerEvent"
-    }
-
+    /**
+     * <p>
+     *     Shutdown the channel gracefully.
+     * </p>
+     */
     public void shutdown() {
-        nettyWorkerGroup.shutdownGracefully();
-        nettyBossGroup.shutdownGracefully();
+        this.nettyWorkerGroup.shutdownGracefully();
+        this.nettyBossGroup.shutdownGracefully();
+    }
+
+    private void onBindSuccess(SocketAddress address) {
+        // Call "BindServerEvent"
+    }
+
+    private void onBindFailure(SocketAddress address, Throwable throwable) {
+        // Call "BindServerEvent"
     }
 
 }

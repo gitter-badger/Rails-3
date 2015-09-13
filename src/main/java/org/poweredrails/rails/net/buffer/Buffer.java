@@ -30,38 +30,69 @@ public class Buffer {
 
     private ByteBuf buf;
 
+    /**
+     * <p>
+     *     Constructs a wrapper around the byte buffer provided.
+     * </p>
+     *
+     * @param buf The byte buffer to wrap around.
+     */
     public Buffer(ByteBuf buf) {
         this.buf = buf;
     }
 
+    /**
+     * @return The byte buffer currently wrapping around.
+     */
     public ByteBuf getByteBuf() {
         return this.buf;
     }
 
+    /**
+     * @return An integer, read from the buffer.
+     */
     public int readInt() {
         return this.buf.readInt();
     }
 
+    /**
+     * @return A long, read from the buffer.
+     */
     public long readLong() {
         return this.buf.readLong();
     }
 
+    /**
+     * @return A short, read from the buffer.
+     */
     public short readShort() {
         return this.buf.readShort();
     }
 
+    /**
+     * @return A unsigned short, read from the buffer.
+     */
     public int readUnsignedShort() {
         return this.buf.readUnsignedShort();
     }
 
+    /**
+     * @return A byte, read from the buffer.
+     */
     public byte readByte() {
         return this.buf.readByte();
     }
 
+    /**
+     * @return An unsigned byte, read from the buffer.
+     */
     public short readUnsignedByte() {
         return this.buf.readUnsignedByte();
     }
 
+    /**
+     * @return A string, read from the buffer.
+     */
     public String readString() {
         int length = this.buf.readInt();
 
@@ -71,6 +102,9 @@ public class Buffer {
         return new String(array);
     }
 
+    /**
+     * @return A var int, read from the buffer.
+     */
     public int readVarInt() {
         int result = 0;
         int count = 0;

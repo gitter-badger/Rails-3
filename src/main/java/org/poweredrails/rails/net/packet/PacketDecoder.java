@@ -35,6 +35,13 @@ public class PacketDecoder extends ByteToMessageDecoder {
 
     private PacketRegistry registry;
 
+    /**
+     * <p>
+     *     Construct a packet decoder for netty, injecting the packet registry.
+     * </p>
+     *
+     * @param registry An instance of the packet registry.
+     */
     public PacketDecoder(PacketRegistry registry) {
         this.registry = registry;
     }

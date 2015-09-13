@@ -32,12 +32,19 @@ public class PacketHandler extends SimpleChannelInboundHandler<Packet> {
 
     private HandlerRegistry registry;
 
+    /**
+     * <p>
+     *     Construct a packet handler for netty, injecting the handler registry.
+     * </p>
+     *
+     * @param registry An instance of the handler registry.
+     */
     public PacketHandler(HandlerRegistry registry) {
         this.registry = registry;
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Packet packet) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, Packet packet) throws Exception {
         packet.handle(this.registry);
     }
 

@@ -26,6 +26,14 @@ package org.poweredrails.rails.net.packet;
 
 public class PacketRegistry {
 
+    /**
+     * <p>
+     *     Finds the class of the packet registered to that id, then creates a new instance of it.
+     * </p>
+     *
+     * @param id The id of the packet.
+     * @return A new instance of the packet registered.
+     */
     public Packet createPacket(int id) {
         return null;
     }

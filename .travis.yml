@@ -2,7 +2,8 @@ sudo: false
 language: java
 jdk:
   - oraclejdk7
-script: gradle build
+install: true
+script: ./gradlew build
 notifications:
   email: false
 

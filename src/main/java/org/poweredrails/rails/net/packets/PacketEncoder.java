@@ -22,15 +22,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.packets;
 
-public class TemporaryPlaceHolder {
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-    /*
-     *  Temporary Place Holder
-     *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
-     */
+public class PacketEncoder extends MessageToByteEncoder<Packet> {
+
+    @Override
+    protected void encode(ChannelHandlerContext ctx, Packet packet, ByteBuf out) throws Exception {
+        ByteBuf buf = packet.toBuffer().getByteBuf();
+        out.writeBytes(buf);
+    }
 
 }

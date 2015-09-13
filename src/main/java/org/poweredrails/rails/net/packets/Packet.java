@@ -22,15 +22,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.packets;
 
-public class TemporaryPlaceHolder {
+import org.poweredrails.rails.net.handlers.HandlerRegistry;
 
-    /*
-     *  Temporary Place Holder
+public interface Packet {
+
+    /**
+     * <p>
+     *     Read the packet data from the buffer.
+     * </p>
      *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
+     * @param buf Buffer class to read from.
      */
+    void fromBuffer(Buffer buf);
+
+    /**
+     * <p>
+     *     Write the packet data to a new buffer and return it.
+     * </p>
+     *
+     * @return New buffer containing serialized data.
+     */
+    Buffer toBuffer();
+
+    /**
+     * <p>
+     *     Handle the packet.
+     * </p>
+     *
+     * @param registry Instance of handler registry.
+     */
+    void handle(HandlerRegistry registry);
 
 }

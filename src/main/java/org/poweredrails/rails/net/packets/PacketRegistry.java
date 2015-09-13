@@ -22,15 +22,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.packets;
 
-public class TemporaryPlaceHolder {
+public class PacketRegistry {
 
-    /*
-     *  Temporary Place Holder
-     *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
-     */
+    public Packet createPacket(int id) {
+        //
+        return null;
+    }
 
 }

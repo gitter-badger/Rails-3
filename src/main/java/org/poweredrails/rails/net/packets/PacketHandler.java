@@ -22,15 +22,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.packets;
 
-public class TemporaryPlaceHolder {
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import org.poweredrails.rails.net.handlers.HandlerRegistry;
 
-    /*
-     *  Temporary Place Holder
-     *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
-     */
+public class PacketHandler extends SimpleChannelInboundHandler<Packet> {
+
+    private HandlerRegistry registry;
+
+    public PacketHandler(HandlerRegistry registry) {
+        this.registry = registry;
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, Packet packet) throws Exception {
+        packet.handle(this.registry);
+    }
 
 }

@@ -22,15 +22,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.handlers;
 
-public class TemporaryPlaceHolder {
+public class HandlerRegistry {
 
-    /*
-     *  Temporary Place Holder
-     *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
-     */
+    public <T> T getHandler(Class<T> clazz) {
+        //
+        return null;
+    }
 
 }

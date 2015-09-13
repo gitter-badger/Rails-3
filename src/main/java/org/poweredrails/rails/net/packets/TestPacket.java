@@ -22,15 +22,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails;
+package org.poweredrails.rails.net.packets;
 
-public class TemporaryPlaceHolder {
+import org.poweredrails.rails.net.handlers.HandlerRegistry;
 
-    /*
-     *  Temporary Place Holder
-     *
-     *  This is the most important class in the project.
-     *  Carefully observe this class to understand our systems.
-     */
+public class TestPacket implements Packet {
+
+    private int foo;
+
+    @Override
+    public void fromBuffer(Buffer buf) {
+
+    }
+
+    @Override
+    public Buffer toBuffer() {
+        return null;
+    }
+
+    @Override
+    public void handle(HandlerRegistry registry) {
+
+    }
 
 }

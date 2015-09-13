@@ -24,7 +24,16 @@
  */
 package org.poweredrails.rails.net.handler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HandlerRegistry {
+
+    private List<Object> handlerList = new ArrayList<>();
+
+    private HandlerRegistry() {
+        // Register any packet handlers.
+    }
 
     /**
      * <p>
@@ -35,7 +44,14 @@ public class HandlerRegistry {
      * @param <T> The type of the handler.
      * @return An instance of the handler, or null if unregistered.
      */
+    @SuppressWarnings("unchecked")
     public <T> T getHandler(Class<T> clazz) {
+        for (Object obj : handlerList) {
+            if (obj.getClass().equals(clazz)) {
+                return (T) obj;
+            }
+        }
+
         return null;
     }
 

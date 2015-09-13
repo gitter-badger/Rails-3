@@ -24,7 +24,16 @@
  */
 package org.poweredrails.rails.net.packet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PacketRegistry {
+
+    private Map<Integer, Class<? extends Packet>> packets = new HashMap<>();
+
+    private PacketRegistry() {
+        // Register any packets.
+    }
 
     /**
      * <p>
@@ -35,7 +44,38 @@ public class PacketRegistry {
      * @return A new instance of the packet registered.
      */
     public Packet createPacket(int id) {
-        return null;
+        Class<? extends Packet> clazz = getPacketClass(id);
+
+        Packet packet = null;
+        try {
+            packet = clazz.newInstance();
+        } catch (InstantiationException e) {
+            throw new RuntimeException("Failed to create an instance of the packet class " + clazz.getName(), e);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return packet;
+    }
+
+    /**
+     * <p>
+     *     Finds the class of the packet registered to that id, and returns it.
+     * </p>
+     *
+     * @param id The id of the packet.
+     * @return The class of the packet.
+     */
+    public Class<? extends Packet> getPacketClass(int id) {
+        return packets.get(id);
+    }
+
+    private void register(int id, Class<? extends Packet> clazz) {
+        if (packets.containsKey(id)) {
+            throw new RuntimeException("Packet with id " + id + " is already registered!");
+        }
+
+        packets.put(id, clazz);
     }
 
 }

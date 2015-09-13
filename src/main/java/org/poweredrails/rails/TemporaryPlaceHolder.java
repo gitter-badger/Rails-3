@@ -29,7 +29,8 @@ public class TemporaryPlaceHolder {
     /*
      *  Temporary Place Holder
      *
-     *  This class will be removed at a later date.
+     *  This is the most important class in the project.
+     *  Carefully observe this class to understand our systems.
      */
 
 }

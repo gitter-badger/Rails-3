@@ -26,64 +26,54 @@ package org.poweredrails.rails.net;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
+
+import java.net.SocketAddress;
+import java.util.HashMap;
 
 public class NetworkManager {
 
-    private int port;
+    private final ServerBootstrap nettyBootstrap = new ServerBootstrap();
+    private final EventLoopGroup nettyBossGroup = new NioEventLoopGroup();
+    private final EventLoopGroup nettyWorkerGroup = new NioEventLoopGroup();
 
-    public NetworkManager(int port) {
-        this.port = port;
+    public NetworkManager() {
+            nettyBootstrap
+                    .group(nettyBossGroup, nettyWorkerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .childOption(ChannelOption.TCP_NODELAY, true)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
     }
 
-    public void start() {
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-        try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        public void initChannel(SocketChannel ch) throws Exception {
-
-                        }
-                    })
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
-
-            // Bind and start to accept incoming connections.
-            ChannelFuture f = null;
-            try {
-                f = b.bind(this.port).sync();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public ChannelFuture bindTo(final SocketAddress socketAddress) {
+        return nettyBootstrap.bind(socketAddress).addListener(new GenericFutureListener<Future<? super Void>>() {
+            @Override
+            public void operationComplete(Future<? super Void> f) throws Exception {
+                if (f.isSuccess()) {
+                    onBindSuccess(socketAddress);
+                } else {
+                    onBindFailure(socketAddress, f.cause());
+                }
             }
+        });
+    }
 
-            // Wait until the server socket is closed.
-            // In this example, this does not happen, but you can do that to gracefully
-            // shut down your server.
-            try {
-                assert f != null;
-                f.channel().closeFuture().sync();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } finally {
-            workerGroup.shutdownGracefully();
-            bossGroup.shutdownGracefully();
-        }
+    public void onBindSuccess(SocketAddress address) {
+        // Call "BindServerEvent"
+    }
+
+    public void onBindFailure(SocketAddress address, Throwable throwable) {
+        // Call "BindServerEvent"
     }
 
     public void shutdown() {
-    }
-
-    public void run() {
+        nettyWorkerGroup.shutdownGracefully();
+        nettyBossGroup.shutdownGracefully();
     }
 
 }

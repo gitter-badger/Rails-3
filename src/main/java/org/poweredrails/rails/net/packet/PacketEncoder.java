@@ -22,23 +22,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails.net.packets;
+package org.poweredrails.rails.net.packet;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import org.poweredrails.rails.net.handlers.HandlerRegistry;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-public class PacketHandler extends SimpleChannelInboundHandler<Packet> {
-
-    private HandlerRegistry registry;
-
-    public PacketHandler(HandlerRegistry registry) {
-        this.registry = registry;
-    }
+public class PacketEncoder extends MessageToByteEncoder<Packet> {
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Packet packet) throws Exception {
-        packet.handle(this.registry);
+    protected void encode(ChannelHandlerContext ctx, Packet packet, ByteBuf out) throws Exception {
+        ByteBuf buf = packet.toBuffer().getByteBuf();
+        out.writeBytes(buf);
     }
 
 }

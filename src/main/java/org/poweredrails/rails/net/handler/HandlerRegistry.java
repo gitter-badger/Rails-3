@@ -22,12 +22,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails.net.packets;
+package org.poweredrails.rails.net.handler;
 
-public class PacketRegistry {
+public class HandlerRegistry {
 
-    public Packet createPacket(int id) {
-        //
+    public <T> T getHandler(Class<T> clazz) {
         return null;
     }
 

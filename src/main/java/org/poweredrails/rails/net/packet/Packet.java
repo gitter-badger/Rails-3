@@ -22,27 +22,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails.net.packets;
+package org.poweredrails.rails.net.packet;
 
-import org.poweredrails.rails.net.handlers.HandlerRegistry;
+import org.poweredrails.rails.net.buffer.Buffer;
+import org.poweredrails.rails.net.handler.HandlerRegistry;
 
-public class TestPacket implements Packet {
+public interface Packet {
 
-    private int foo;
+    /**
+     * <p>
+     *     Read the packet data from the buffer.
+     * </p>
+     *
+     * @param buf Buffer class to read from.
+     */
+    void fromBuffer(Buffer buf);
 
-    @Override
-    public void fromBuffer(Buffer buf) {
+    /**
+     * <p>
+     *     Write the packet data to a new buffer and return it.
+     * </p>
+     *
+     * @return New buffer containing serialized data.
+     */
+    Buffer toBuffer();
 
-    }
-
-    @Override
-    public Buffer toBuffer() {
-        return null;
-    }
-
-    @Override
-    public void handle(HandlerRegistry registry) {
-
-    }
+    /**
+     * <p>
+     *     Handle the packet.
+     * </p>
+     *
+     * @param registry Instance of handler registry.
+     */
+    void handle(HandlerRegistry registry);
 
 }

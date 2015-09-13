@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails.net.packets;
+package org.poweredrails.rails.net.buffer;
 
 import io.netty.buffer.ByteBuf;
 

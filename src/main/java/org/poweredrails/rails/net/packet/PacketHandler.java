@@ -22,13 +22,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.poweredrails.rails.net.handlers;
+package org.poweredrails.rails.net.packet;
 
-public class HandlerRegistry {
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import org.poweredrails.rails.net.handler.HandlerRegistry;
 
-    public <T> T getHandler(Class<T> clazz) {
-        //
-        return null;
+public class PacketHandler extends SimpleChannelInboundHandler<Packet> {
+
+    private HandlerRegistry registry;
+
+    public PacketHandler(HandlerRegistry registry) {
+        this.registry = registry;
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, Packet packet) throws Exception {
+        packet.handle(this.registry);
     }
 
 }

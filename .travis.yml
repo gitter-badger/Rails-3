@@ -1,0 +1,8 @@
+sudo: false
+language: java
+jdk:
+  - oraclejdk7
+script: gradle build
+notifications:
+  email: false
+

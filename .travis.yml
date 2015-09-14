@@ -6,5 +6,9 @@ install: true
 script: ./gradlew build
 notifications:
   email: false
+  slack:
+    rooms:
+      - powered-rails:RrgqFxQvGze6B8FLM3z1nYIL#general
+      - powered-rails:RrgqFxQvGze6B8FLM3z1nYIL#development
 before_install:
  - chmod +x gradlew

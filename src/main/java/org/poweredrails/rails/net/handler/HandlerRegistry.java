@@ -46,7 +46,7 @@ public class HandlerRegistry {
      */
     @SuppressWarnings("unchecked")
     public <T> T getHandler(Class<T> clazz) {
-        for (Object obj : handlerList) {
+        for (Object obj : this.handlerList) {
             if (obj.getClass().equals(clazz)) {
                 return (T) obj;
             }

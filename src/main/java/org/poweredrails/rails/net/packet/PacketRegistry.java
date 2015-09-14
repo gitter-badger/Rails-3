@@ -32,7 +32,6 @@ public class PacketRegistry {
     private Map<Integer, Class<? extends Packet>> packets = new HashMap<>();
 
     private PacketRegistry() {
-        // Register any packets.
     }
 
     /**
@@ -54,7 +53,6 @@ public class PacketRegistry {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
         return packet;
     }
 
@@ -67,15 +65,14 @@ public class PacketRegistry {
      * @return The class of the packet.
      */
     public Class<? extends Packet> getPacketClass(int id) {
-        return packets.get(id);
+        return this.packets.get(id);
     }
 
     private void register(int id, Class<? extends Packet> clazz) {
-        if (packets.containsKey(id)) {
+        if (this.packets.containsKey(id)) {
             throw new RuntimeException("Packet with id " + id + " is already registered!");
         }
-
-        packets.put(id, clazz);
+        this.packets.put(id, clazz);
     }
 
 }

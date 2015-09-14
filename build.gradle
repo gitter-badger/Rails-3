@@ -15,8 +15,6 @@ apply plugin: 'checkstyle'
 
 group = 'org.poweredrails'
 version = '0.1-DEVELOPMENT'
-ext.name = 'Rails'
-ext.url = 'http://poweredrails.org'
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
@@ -39,7 +37,6 @@ dependencies {
     compile 'io.netty:netty-all:4.0.21.Final'
 
     checkstyle 'com.puppycrawl.tools:checkstyle:6.5'
-
 }
 
 configure([compileJava, compileTestJava]) {
@@ -80,7 +77,7 @@ task getWrapper(type: Wrapper) {
 }
 
 license {
-    header project.file('HEADER.txt')
+    header file('HEADER.txt')
     include '**/*.java'
 
     ignoreFailures false
@@ -98,8 +95,8 @@ processResources {
 checkstyle {
     configFile = file('checkstyle.xml')
     configProperties = [
-            'basedir': project.projectDir,
-            'suppressions': project.file('checkstyle-suppressions.xml'),
+            'basedir': projectDir,
+            'suppressions': file('checkstyle-suppressions.xml'),
             'severity': 'warning'
     ]
 }

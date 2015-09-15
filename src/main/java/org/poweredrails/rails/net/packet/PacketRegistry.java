@@ -29,8 +29,6 @@ import org.poweredrails.rails.net.packet.handshake.PacketReceiveHandshake;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.poweredrails.rails.net.packet.SessionStateEnum.*;
-
 public class PacketRegistry {
 
     private Map<SessionStateEnum, Map<Integer, Class<? extends Packet>>> packets = new HashMap<>();
@@ -41,7 +39,7 @@ public class PacketRegistry {
      * </p>
      */
     public PacketRegistry() {
-        register(HANDSHAKE, 0x00, PacketReceiveHandshake.class);
+        register(SessionStateEnum.HANDSHAKE, 0x00, PacketReceiveHandshake.class);
     }
 
     /**

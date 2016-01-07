@@ -1,20 +1,64 @@
-Powered Rails [![Build Status](https://travis-ci.org/PoweredRails/Rails.svg?branch=master)](https://travis-ci.org/PoweredRails/Rails)
-=================
+Rails
+=====
 
-**Currently under planning for development**
+[![Join the chat at https://gitter.im/PoweredRails/Rails](https://badges.gitter.im/PoweredRails/Rails.svg)](https://gitter.im/PoweredRails/Rails?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<img hspace='25' vspace='25' align="right" src="https://avatars2.githubusercontent.com/u/12877088?s=200">
 
-The official repository for Rails. It is licensed under the [MIT License]. 
+[![Status][Travis-Badge]][Travis] [![Chat at http://gitter.im/PoweredRails/Rails][Gitter-Badge]][Gitter]
 
-## General Information
-* Rails is set to build with [Java 8] 
-* Development Status: **Planning**
+**Warning**: Rails is under heavy development. Things may change without warning. Make sure you keep up to date with the latest build.
+
+Rails is an open source, free, and independent Minecraft server platform designed with [Java 8] and licensed under the [MIT license].
+
+Come visit our [Forum] for more helpful discussion.
+
+Current version: v0.1-DEVELOPMENT
+
+## Milestones
+
+- [ ] 0.1 - Networking
+- [x] 0.2 - Events
+- [ ] 0.2.5 - Basic Entity API
+- [ ] 0.3 - Players
+- [ ] 0.4 - Worlds
+- [ ] 0.5 - World Generation
+- [ ] 0.6 - Multiplayer
+- [ ] 0.7 - Entities
+- [ ] 0.8 - Emulation
+- [ ] 0.9 - Plugins
+- [ ] 0.9.5 - Optimisation
+- [ ] 1.0 - RELEASE (Simple functionality)
+
+For more info about the milestones, go to [Milestones].
+
+## Client Support
+
+When released, clients will be able to connect on [Minecraft] version 1.8 to 1.8.8.
+
+## Building
+
+If you have [Gradle] installed. You can then use the `gradle` command in the project directory
+to build the JAR. If you don't have [Gradle] installed you can use `./gradlew` for Unix systems and
+`gradlew.bat` for Windows systems. The compiled JAR can then be found in `/build/libs` labeled
+`rails-vX.X.X-development-all.jar`.
 
 ## Contributing
-Are you a developer looking to contribute some code? We'd love the help!
-* Fork the repo and make changes
-* Open a pull request with your changes, following our [guidelines](CONTRIBUTING.md).
-* Please follow the above guidelines and requirements for your pull request(s) to be accepted.
 
-[MIT License]: https://opensource.org/licenses/MIT
-[API]: https://github.com/PoweredRails/RailsAPI/
+Are you a developer looking to contribute some code? We'd love the help!
+* Fork the repo and make changes, making sure those changes follow [our guidelines][Contributer].
+* Open a pull request with your changes.
+* Once your pull request is reviewed by a collaborator it will be merged.
+
+See the [`CONTRIBUTING.md`][Contributer] file for more information on how to contribute to Rails.
+
+[MIT license]: https://opensource.org/licenses/MIT
+[Minecraft]: https://minecraft.net/
 [Java 8]: http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html
+[Gitter]: https://gitter.im/PoweredRails/Rails
+[Gitter-Badge]: https://badges.gitter.im/Join%20Chat.svg
+[Travis]: https://travis-ci.org/PoweredRails/Rails
+[Travis-Badge]: https://travis-ci.org/PoweredRails/Rails.svg?branch=master
+[Contributer]: CONTRIBUTING.MD
+[Forum]: http://discuss.poweredrails.org
+[Gradle]: https://www.gradle.org
+[Milestones]: https://github.com/PoweredRails/Rails/milestones
